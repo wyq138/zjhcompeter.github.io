@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件教程 - 电脑知识大全（2025最新版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", "Heiti SC", sans-serif; line-height: 1.8; color: #333; background: #f7f9fc; }
+        .header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: #fff; padding: 2rem 1rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+        .nav { background: #fff; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
+        .nav-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .nav a { color: #2c3e50; text-decoration: none; margin: 0 1.2rem; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 500; transition: all 0.3s; }
+        .nav a:hover { color: #3498db; background: #f0f7ff; }
+        .nav a.active { color: #3498db; border-bottom: 2px solid #3498db; }
+        .search-box { max-width: 800px; margin: 2rem auto; text-align: center; padding: 0 1rem; }
+        .search-box input { padding: 1rem 1.5rem; width: 70%; max-width: 600px; border: 1px solid #ddd; border-radius: 4px 0 0 4px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: #3498db; box-shadow: 0 0 0 2px rgba(52,152,219,0.1); }
+        .search-box button { padding: 1rem 2rem; background: #3498db; color: #fff; border: none; border-radius: 0 4px 4px 0; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        .search-box button:hover { background: #2980b9; }
+        .search-result { max-width: 800px; margin: 1rem auto; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: none; }
+        .container { max-width: 1200px; margin: 3rem auto; padding: 0 1rem; }
+        .content-card { background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); margin-bottom: 3rem; }
+        .content-title { color: #2c3e50; font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 3px solid #f0f7ff; padding-bottom: 1rem; }
+        .content-subtitle { color: #3498db; font-size: 1.4rem; margin: 2rem 0 1rem; }
+        .content-img { max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .step-list { margin-left: 2rem; line-height: 2; }
+        .step-list li { margin-bottom: 1rem; position: relative; padding-left: 1rem; }
+        .step-list li::before { content: "→"; color: #3498db; font-weight: bold; position: absolute; left: -1rem; }
+        .table-container { overflow-x: auto; margin: 1.5rem 0; }
+        .content-table { width: 100%; border-collapse: collapse; }
+        .content-table th, .content-table td { border: 1px solid #ddd; padding: 1rem; text-align: left; }
+        .content-table th { background: #f7f9fc; color: #2c3e50; font-weight: 600; }
+        .content-table tr:nth-child(even) { background: #f9f9f9; }
+        .tip-box { background: #f0f7ff; padding: 1.2rem; border-left: 4px solid #3498db; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+        .code-box { background: #f8f9fa; padding: 1rem; border-radius: 4px; font-family: "Consolas", monospace; font-size: 0.9rem; margin: 1rem 0; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>软件教程 - 办公、设计、编程全掌握</h1>
+        <p>Windows系统优化、Office全套技巧、PS/PR基础、编程工具使用，新手也能快速上手</p>
+    </div>
+
+    <div class="nav">
+        <div class="nav-container">
+            <a href="index.html">首页</a>
+            <a href="hardware.html">硬件知识</a>
+            <a href="software.html" class="active">软件教程</a>
+            <a href="troubleshoot.html">故障排查</a>
+            <a href="tips.html">实用技巧</a>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索软件教程（如Windows优化、Excel技巧、PS抠图）...">
+        <button onclick="searchSite()">搜索</button>
+        <div class="search-result" id="searchResult"></div>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <h2 class="content-title" id="windows">Windows 10/11 系统优化全步骤（2025最新）</h2>
+            <img src="https://picsum.photos/id/4/1200/600" alt="Windows系统优化" class="content-img">
+            <p>Windows系统默认设置存在较多冗余功能，导致开机慢、运行卡顿。通过以下优化步骤，可大幅提升系统流畅度，开机速度提升30%-50%，运行内存占用减少20%-30%。</p>
+
+            <h3 class="content-subtitle">1. 关闭开机自启程序</h3>
+            <p>开机自启程序过多是导致开机慢的主要原因，只需保留必要程序（如杀毒软件、输入法）即可：</p>
+            <ul class="step-list">
+                <li>按下 <strong>Ctrl+Shift+Esc</strong> 打开「任务管理器」；</li>
+                <li>切换到「启动应用」选项卡，查看所有自启程序；</li>
+                <li>右键点击不需要的程序（如购物软件、视频软件、游戏客户端），选择「禁用」；</li>
+                <li>重点禁用：360安全卫士（非必需）、腾讯视频、爱奇艺、迅雷、各类游戏客户端等；</li>
+                <li>重启电脑，开机速度明显提升。</li>
+            </ul>
+
+            <h3 class="content-subtitle">2. 禁用后台无用服务</h3>
+            <p>Windows后台运行着大量无用服务，占用内存和CPU资源，可选择性禁用：</p>
+            <ul class="step-list">
+                <li>按下 <strong>Win+R</strong>，输入 <code>services.msc</code>，点击「确定」打开「服务」窗口；</li>
+                <li>找到以下服务，右键选择「属性」，将「启动类型」改为「禁用」，点击「确定」：
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>Windows Search（搜索服务，非必需，禁用后无法使用系统搜索）；</li>
+                        <li>Superfetch（预加载服务，占用内存，禁用后不影响日常使用）；</li>
+                        <li>HomeGroup Listener / HomeGroup Provider（家庭组服务，无家庭组可禁用）；</li>
+                        <li>Print Spooler（打印后台处理程序，无打印机可禁用）；</li>
+                        <li>Windows Update Medic Service（Windows更新修复服务，可禁用，不影响系统更新）。</li>
+                    </ul>
+                </li>
+                <li>无需重启，设置立即生效。</li>
+            </ul>
+
+            <h3 class="content-subtitle">3. 关闭视觉效果（提升流畅度）</h3>
+            <p>Windows视觉效果（如透明玻璃、动画效果）占用大量显卡资源，老旧电脑建议关闭：</p>
+            <ul class="step-list">
+                <li>右键点击「此电脑」，选择「属性」；</li>
+                <li>点击「高级系统设置」，在「系统属性」窗口中切换到「高级」选项卡；</li>
+                <li>点击「性能」区域的「设置」，打开「性能选项」窗口；</li>
+                <li>选择「调整为最佳性能」，或手动取消以下效果：
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>透明玻璃效果；</li>
+                        <li>窗口最大化/最小化动画；</li>
+                        <li>任务栏缩略图动画；</li>
+                        <li>平滑滚动；</li>
+                        <li>阴影效果。</li>
+                    </ul>
+                </li>
+                <li>点击「确定」，系统流畅度明显提升。</li>
+            </ul>
+
+            <h3 class="content-subtitle">4. 清理系统垃圾（释放空间）</h3>
+            <p>系统垃圾（临时文件、缓存文件、回收站文件）占用大量磁盘空间，定期清理可释放空间：</p>
+            <ul class="step-list">
+                <li>按下 <strong>Win+R</strong>，输入 <code>cleanmgr</code>，点击「确定」打开「磁盘清理」；</li>
+                <li>选择系统盘（通常为C盘），点击「确定」，等待扫描垃圾文件；</li>
+                <li>勾选所有垃圾项（临时文件、下载文件、回收站、系统更新备份等），点击「确定」；</li>
+                <li>如需清理系统更新备份，点击「清理系统文件」，重复上述步骤；</li>
+                <li>建议每月清理一次，可释放5-20GB空间。</li>
+            </ul>
+
+            <h3 class="content-subtitle">5. 关闭Windows自动更新（可选）</h3>
+            <p>Windows自动更新会在后台下载安装更新，占用带宽和系统资源，可手动关闭（需定期手动更新）：</p>
+            <ul class="step-list">
+                <li>打开「设置」（Win+I），点击「更新和安全」→「Windows更新」；</li>
+                <li>点击「高级选项」，关闭「接收预览版更新」和「自动下载更新」；</li>
+                <li>返回上一级，点击「暂停更新」，选择暂停时间（最长35天）；</li>
+                <li>建议每3个月手动检查一次更新，避免系统漏洞。</li>
+            </ul>
+
+            <div class="tip-box">
+                <p>💡 优化小贴士：</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>优化前建议创建系统还原点（控制面板→系统和安全→系统→系统保护），若优化后出现问题可还原；</li>
+                    <li>禁用服务时不要盲目禁用，不确定的服务可先查询用途；</li>
+                    <li>定期（每3个月）重复上述步骤，保持系统流畅。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="content-title" id="excel">Excel 高级函数大全（实战教程）</h2>
+            <img src="https://picsum.photos/id/5/1200/600" alt="Excel函数教程" class="content-img">
+            <p>Excel函数是数据处理的核心工具，掌握以下高频函数，可大幅提升数据处理效率，解决90%的办公场景需求（如数据查找、统计、分析、汇总）。</p>
+
+            <h3 class="content-subtitle">1. 基础必备函数</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>函数名称</th>
+                        <th>语法格式</th>
+                        <th>功能说明</th>
+                        <th>实战案例</th>
+                    </tr>
+                    <tr>
+                        <td>SUM（求和）</td>
+                        <td>=SUM(区域)</td>
+                        <td>计算指定区域内所有数值的和</td>
+                        <td>=SUM(A1:A10) → 计算A1到A10的和</td>
+                    </tr>
+                    <tr>
+                        <td>AVERAGE（平均值）</td>
+                        <td>=AVERAGE(区域)</td>
+                        <td>计算指定区域内所有数值的平均值</td>
+                        <td>=AVERAGE(B1:B20) → 计算B1到B20的平均值</td>
+                    </tr>
+                    <tr>
+                        <td>COUNT（计数）</td>
+                        <td>=COUNT(区域)</td>
+                        <td>计算指定区域内数值型数据的个数</td>
+                        <td>=COUNT(C1:C30) → 统计C列数值个数</td>
+                    </tr>
+                    <tr>
+                        <td>MAX/MIN（最大/最小值）</td>
+                        <td>=MAX(区域)/=MIN(区域)</td>
+                        <td>计算指定区域内的最大值/最小值</td>
+                        <td>=MAX(D1:D15) → 查找D列最大值</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="content-subtitle">2. 数据查找函数（高频实用）</h3>
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（1）VLOOKUP函数（纵向查找）</h4>
+            <p>功能：根据指定条件，在表格纵向区域中查找对应数据（最常用函数之一）。</p>
+            <div class="code-box">=VLOOKUP(查找值, 数据区域, 返回列数, 匹配类型)</div>
+            <ul class="step-list">
+                <li>查找值：要查找的内容（如姓名、编号）；</li>
+                <li>数据区域：查找的范围（需包含查找值和返回值，查找值需在区域第一列）；</li>
+                <li>返回列数：返回数据在区域中的列数（从查找值所在列开始计数）；</li>
+                <li>匹配类型：0=精确匹配（推荐），1=模糊匹配。</li>
+            </ul>
+            <p>实战案例：根据姓名查找成绩（表格A列=姓名，B列=成绩）：</p>
+            <div class="code-box">=VLOOKUP("张三", A1:B100, 2, 0) → 查找A列中"张三"对应的B列成绩</div>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（2）INDEX+MATCH函数（万能查找）</h4>
+            <p>功能：VLOOKUP的升级版，支持横向/纵向查找，不受查找值位置限制，更灵活。</p>
+            <div class="code-box">=INDEX(返回区域, MATCH(查找值, 查找区域, 0))</div>
+            <ul class="step-list">
+                <li>返回区域：要返回的数据所在区域；</li>
+                <li>MATCH函数：查找指定值在区域中的位置（返回行号/列号）。</li>
+            </ul>
+            <p>实战案例：根据姓名查找成绩（表格A列=姓名，B列=成绩）：</p>
+            <div class="code-box">=INDEX(B1:B100, MATCH("张三", A1:A100, 0)) → 效果等同于VLOOKUP</div>
+            <p>优势：若查找值在B列，返回A列数据，INDEX+MATCH仍可实现，VLOOKUP无法实现。</p>
+
+            <h3 class="content-subtitle">3. 数据统计函数</h3>
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（1）COUNTIF函数（单条件计数）</h4>
+            <p>功能：根据单个条件，统计区域内符合条件的单元格个数。</p>
+            <div class="code-box">=COUNTIF(统计区域, 条件)</div>
+            <p>实战案例：</p>
+            <ul class="step-list">
+                <li>=COUNTIF(C1:C100, "≥90") → 统计C列中≥90的人数；</li>
+                <li>=COUNTIF(D1:D100, "男") → 统计D列中性别为"男"的人数；</li>
+                <li>=COUNTIF(E1:E100, "*张三*") → 统计E列中包含"张三"的单元格个数（*为通配符）。</li>
+            </ul>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（2）SUMIF函数（单条件求和）</h4>
+            <p>功能：根据单个条件，计算区域内符合条件的数值之和。</p>
+            <div class="code-box">=SUMIF(条件区域, 条件, 求和区域)</div>
+            <p>实战案例：统计"男生"的总成绩（D列=性别，B列=成绩）：</p>
+            <div class="code-box">=SUMIF(D1:D100, "男", B1:B100)</div>
+
+            <h3 class="content-subtitle">4. 数据透视表（快速汇总数据）</h3>
+            <p>功能：无需函数，通过拖拽操作快速实现数据汇总、分组、筛选，适合大量数据处理。</p>
+            <ul class="step-list">
+                <li>选中数据区域（包含表头）；</li>
+                <li>点击「插入」→「数据透视表」，选择放置位置（新工作表/现有工作表）；</li>
+                <li>在右侧「数据透视表字段」中，拖拽字段到「行」「列」「值」区域：
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>行/列：分组字段（如部门、性别）；</li>
+                        <li>值：汇总字段（如成绩、金额，默认求和，可修改为计数、平均值）。</li>
+                    </ul>
+                </li>
+                <li>示例：拖拽「部门」到「行」，「成绩」到「值」，自动汇总各部门总成绩。</li>
+            </ul>
+
+            <div class="tip-box">
+                <p>💡 Excel技巧小贴士：</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>函数输入时需使用英文半角符号，括号、逗号均为英文；</li>
+                    <li>数据区域尽量使用绝对引用（如$A$1:$B$100），避免复制函数时区域偏移；</li>
+                    <li>复杂数据处理优先使用数据透视表，效率比函数高10倍。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="content-title" id="word">Word 快速排版技巧（论文/报告专用）</h2>
+            <img src="https://picsum.photos/id/6/1200/600" alt="Word排版技巧" class="content-img">
+            <p>Word排版是办公必备技能，尤其是论文、报告、简历等正式文档，需保证格式统一、美观。掌握以下技巧，可快速完成专业排版，避免手动调整的繁琐。</p>
+
+            <h3 class="content-subtitle">1. 样式功能（统一格式核心）</h3>
+            <p>样式是Word排版的核心，可快速统一全文标题、正文格式，修改时只需修改样式，无需逐段调整：</p>
+            <ul class="step-list">
+                <li>点击「开始」选项卡，找到「样式」组（默认包含标题1、标题2、正文等样式）；</li>
+                <li>选中标题文本，点击「标题1」，选中二级标题点击「标题2」，正文点击「正文」；</li>
+                <li>修改样式：右键点击样式名称（如标题1），选择「修改」，可调整字体、字号、颜色、行距等；</li>
+                <li>示例：将标题1设置为「黑体、二号、居中、蓝色」，修改后所有应用标题1的文本自动同步。</li>
+            </ul>
+
+            <h3 class="content-subtitle">2. 自动生成目录（论文必备）</h3>
+            <p>使用样式功能后，可自动生成目录，且目录可更新（修改标题后无需手动调整目录）：</p>
+            <ul class="step-list">
+                <li>确保全文标题已应用样式（标题1、标题2、标题3）；</li>
+                <li>将光标定位到需要插入目录的位置（通常为文档开头）；</li>
+                <li>点击「引用」选项卡→「目录」→「自动目录」，选择目录样式；</li>
+                <li>更新目录：修改标题内容或页码后，右键点击目录，选择「更新域」→「更新整个目录」。</li>
+            </ul>
+
+            <h3 class="content-subtitle">3. 批量修改格式（查找替换）</h3>
+            <p>快速替换全文中特定格式（如将所有「宋体」改为「黑体」，或批量删除空行）：</p>
+            <ul class="step-list">
+                <li>按下 <strong>Ctrl+H</strong> 打开「查找和替换」窗口；</li>
+                <li>替换文本格式：点击「更多」→「格式」，设置查找格式和替换格式（如查找字体=宋体，替换字体=黑体）；</li>
+                <li>批量删除空行：在「查找内容」中输入 <code>^p^p</code>，「替换为」中输入 <code>^p</code>，点击「全部替换」（^p代表段落标记）；</li>
+                <li>批量修改字号：查找格式设置为字号=小四，替换格式设置为字号=四号，点击「全部替换」。</li>
+            </ul>
+
+            <h3 class="content-subtitle">4. 页面布局优化（规范文档）</h3>
+            <ul class="step-list">
+                <li>设置页边距：点击「布局」→「页边距」，选择「自定义边距」，论文通常设置为上3cm、下2.5cm、左3cm、右2.5cm；</li>
+                <li>设置纸张大小：点击「布局」→「纸张大小」，选择A4（默认）或其他尺寸；</li>
+                <li>设置行距：选中全文，右键→「段落」，设置行距为「固定值20磅」或「多倍行距1.5倍」；</li>
+                <li>添加页码：点击「插入」→「页码」，选择页码位置（页脚居中最常用），论文页码从正文开始计数（可设置分节符）。</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2 class="content-title" id="ps">Photoshop 基础技巧（抠图+调色+修图）</h2>
+            <img src="https://picsum.photos/id/7/1200/600" alt="PS基础技巧" class="content-img">
+            <p>Photoshop（PS）是专业的图片处理软件，以下基础技巧覆盖90%的日常使用场景（如抠图、调色、修图、尺寸调整），新手也能快速上手。</p>
+
+            <h3 class="content-subtitle">1. 图片尺寸调整（常用）</h3>
+            <p>修改图片大小、分辨率，适合微信配图、海报制作、证件照调整：</p>
+            <ul class="step-list">
+                <li>打开图片：PS中点击「文件」→「打开」，选择要处理的图片；</li>
+                <li>调整尺寸：按下 <strong>Alt+Ctrl+I</strong> 打开「图像大小」窗口；</li>
+                <li>设置参数：
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>像素尺寸：修改宽度/高度（勾选「约束比例」避免图片变形）；</li>
+                        <li>分辨率：网页图片72dpi，打印图片300dpi；</li>
+                        <li>证件照示例：1寸照片（295px×413px，300dpi），2寸照片（413px×579px，300dpi）。</li>
+                    </ul>
+                </li>
+                <li>点击「确定」，完成尺寸调整；</li>
+                <li>保存图片：点击「文件」→「存储为」，选择格式（JPG/PNG，网页用JPG，透明背景用PNG）。</li>
+            </ul>
+
+            <h3 class="content-subtitle">2. 快速抠图（3种常用方法）</h3>
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（1）快速选择工具（适合边缘清晰的图片）</h4>
+            <ul class="step-list">
+                <li>选择工具：左侧工具栏点击「快速选择工具」（快捷键W）；</li>
+                <li>调整画笔大小：按下「]」放大画笔，「[」缩小画笔；</li>
+                <li>选中目标：点击并拖动鼠标，选中要抠取的部分（如人物、物体），软件会自动识别边缘；</li>
+                <li>调整选区：选中后，点击顶部「调整边缘」，可细化边缘（如平滑、羽化）；</li>
+                <li>复制抠图：按下 <strong>Ctrl+J</strong>，生成新图层（抠取的内容），隐藏背景图层即可。</li>
+            </ul>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（2）魔棒工具（适合纯色背景）</h4>
+            <ul class="step-list">
+                <li>选择工具：左侧工具栏点击「魔棒工具」（快捷键W，长按快速选择工具切换）；</li>
+                <li>设置容差：顶部工具栏「容差」设置为32（数值越大，选中范围越广）；</li>
+                <li>选中背景：点击纯色背景（如白色、蓝色），背景会被选中（按住Shift可添加选区，Alt可减少选区）；</li>
+                <li>反选选区：按下 <strong>Ctrl+Shift+I</strong>，选中目标内容（而非背景）；</li>
+                <li>复制抠图：Ctrl+J生成新图层，完成抠图。</li>
+            </ul>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（3）钢笔工具（适合边缘复杂的图片）</h4>
+            <p>功能：精准抠图，适合头发、衣物等边缘复杂的场景（专业抠图方法）。</p>
+            <ul class="step-list">
+                <li>选择工具：左侧工具栏点击「钢笔工具」（快捷键P）；</li>
+                <li>绘制路径：点击鼠标创建锚点，沿着目标边缘绘制路径（曲线部分按住鼠标拖动调整）；</li>
+                <li>闭合路径：绘制完成后，点击第一个锚点闭合路径；</li>
+                <li>转换选区：右键点击路径，选择「建立选区」，羽化值设为0，点击「确定」；</li>
+                <li>复制抠图：Ctrl+J生成新图层，完成抠图。</li>
+            </ul>
+
+            <h3 class="content-subtitle">3. 图片调色（快速提升质感）</h3>
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（1）亮度/对比度（基础调色）</h4>
+            <ul class="step-list">
+                <li>点击「图像」→「调整」→「亮度/对比度」；</li>
+                <li>拖动滑块调整：亮度增加可提亮图片，对比度增加可让图片更清晰；</li>
+                <li>建议：亮度+10~20，对比度+15~30（根据图片实际情况调整）。</li>
+            </ul>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（2）色阶（调整明暗层次）</h4>
+            <ul class="step-list">
+                <li>点击「图像」→「调整」→「色阶」（快捷键Ctrl+L）；</li>
+                <li>拖动三个滑块：黑色滑块右移（加深暗部），白色滑块左移（提亮亮部），灰色滑块左右移动（调整中间调）；</li>
+                <li>效果：图片明暗层次更丰富，质感提升。</li>
+            </ul>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（3）曲线（专业调色）</h4>
+            <ul class="step-list">
+                <li>点击「图像」→「调整」→「曲线」（快捷键Ctrl+M）；</li>
+                <li>调整曲线：向上拖动曲线提亮图片，向下拖动变暗；</li>
+                <li>预设效果：点击曲线窗口右上角，选择预设（如「提亮」「增加对比度」），快速调色。</li>
+            </ul>
+
+            <h3 class="content-subtitle">4. 修图技巧（去除水印/瑕疵）</h3>
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（1）修补工具（去除水印/杂物）</h4>
+            <ul class="step-list">
+                <li>选择工具：左侧工具栏点击「修补工具」（快捷键J，长按污点修复画笔切换）；</li>
+                <li>框选瑕疵：点击并拖动鼠标，框选要去除的水印、杂物；</li>
+                <li>拖动修复：将选中的区域拖动到无瑕疵的相似背景处，松开鼠标，瑕疵会自动被背景替换；</li>
+                <li>重复操作：复杂水印可分多次框选修复。</li>
+            </ul>
+
+            <h4 style="color: #2c3e50; margin: 1rem 0;">（2）污点修复画笔（去除小瑕疵）</h4>
+            <ul class="step-list">
+                <li>选择工具：左侧工具栏点击「污点修复画笔工具」（快捷键J）；</li>
+                <li>调整画笔大小：「]」/「[」调整画笔大小（略大于瑕疵）；</li>
+                <li>点击修复：直接点击图片上的小瑕疵（如斑点、灰尘），软件会自动修复。</li>
+            </ul>
+
+            <div class="tip-box">
+                <p>💡 PS小贴士：</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>处理图片时建议复制背景图层，在新图层上操作，避免破坏原图；</li>
+                    <li>快捷键是提升效率的关键，牢记常用快捷键（如Ctrl+J复制图层、Ctrl+T自由变换）；</li>
+                    <li>保存图片时，若需后续编辑，选择PSD格式；若用于网页/打印，选择JPG/PNG格式。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="hardware.html">硬件知识</a></li>
+                    <li><a href="software.html">软件教程</a></li>
+                    <li><a href="troubleshoot.html">故障排查</a></li>
+                    <li><a href="tips.html">实用技巧</a></li>
+                    <li><a href="index.html#about">关于我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>系统专题</h3>
+                <ul>
+                    <li><a href="software.html#windows">Windows优化</a></li>
+                    <li><a href="software.html#excel">Excel函数</a></li>
+                    <li><a href="software.html#word">Word排版</a></li>
+                    <li><a href="software.html#ps">PS基础</a></li>
+                    <li><a href="software.html#program">编程工具</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>常用工具</h3>
+                <ul>
+                    <li><a href="https://www.wps.cn/" target="_blank">WPS Office</a></li>
+                    <li><a href="https://www.adobe.com/cn/products/photoshop.html" target="_blank">Photoshop</a></li>
+                    <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a></li>
+                    <li><a href="https://www.python.org/" target="_blank">Python</a></li>
+                    <li><a href="https://www.7-zip.org/" target="_blank">7-Zip</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>反馈建议</h3>
+                <ul>
+                    <li>作者：周家弘</li>
+                    <li>反馈邮箱：zjhwyq123456@qq.com</li>
+                    <li>网站更新：每月1日</li>
+                    <li>问题回复：24小时内</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 电脑知识大全 - 周家弘 版权所有 | 反馈邮箱：zjhwyq123456@qq.com</p>
+        </div>
+    </div>
+
+    <!-- 搜索功能JavaScript -->
+    <script>
+        const searchData = [
+            { keyword: "Windows", title: "Windows 10/11 系统优化全步骤", url: "software.html#windows", desc: "开机自启、后台服务、视觉效果优化，提升流畅度" },
+            { keyword: "Excel", title: "Excel 高级函数大全", url: "software.html#excel", desc: "VLOOKUP、INDEX+MATCH、数据透视表实战教程" },
+            { keyword: "Word", title: "Word 快速排版技巧", url: "software.html#word", desc: "样式、目录、页面布局，论文/报告专用" },
+            { keyword: "PS", title: "Photoshop 基础技巧", url: "software.html#ps", desc: "抠图、调色、修图、尺寸调整，新手入门" },
+            { keyword: "编程工具", title: "编程工具推荐：VS Code、PyCharm", url: "software.html#program", desc: "插件安装、快捷键、调试方法" },
+            { keyword: "VLOOKUP", title: "Excel VLOOKUP函数实战", url: "software.html#excel", desc: "纵向查找数据，办公必备函数" },
+            { keyword: "数据透视表", title: "Excel 数据透视表教程", url: "software.html#excel", desc: "快速汇总、分组、筛选数据" },
+            { keyword: "PS抠图", title: "Photoshop 快速抠图技巧", url: "software.html#ps", desc: "快速选择、魔棒、钢笔工具，3种方法" },
+            { keyword: "Word目录", title: "Word 自动生成目录", url: "software.html#word", desc: "论文目录快速生成，支持更新" }
+        ];
+
+        function searchSite() {
+            const input = document.getElementById("searchInput").value.trim().toLowerCase();
+            const resultBox = document.getElementById("searchResult");
+            resultBox.innerHTML = "";
+            resultBox.style.display = "block";
+
+            if (!input) {
+                resultBox.innerHTML = "<p>请输入搜索关键词（如Windows优化、Excel技巧、PS抠图）</p>";
+                return;
+            }
+
+            const matches = searchData.filter(item => 
+                item.keyword.toLowerCase().includes(input) || 
+                item.title.toLowerCase().includes(input) || 
+                item.desc.toLowerCase().includes(input)
+            );
+
+            if (matches.length === 0) {
+                resultBox.innerHTML = "<p>未找到相关内容，请更换关键词尝试（如Excel函数、Word排版、PS调色）</p>";
+            } else {
+                let html = `<p>找到 ${matches.length} 条相关结果：</p><ul style="list-style:none;margin:1rem 0;">`;
+                matches.forEach(item => {
+                    html += `<li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f0f0f0;">
+                        <a href="${item.url}" style="color:#3498db; text-decoration:none; font-weight:500; font-size:1.1rem;">${item.title}</a>
+                        <p style="color:#666; margin-top:0.5rem;">${item.desc}</p>
+                    </li>`;
+                });
+                html += "</ul>";
+                resultBox.innerHTML = html;
+            }
+        }
+
+        // 回车触发搜索
+        document.getElementById("searchInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") searchSite();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硬件知识 - 电脑知识大全（2025最新版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", "Heiti SC", sans-serif; line-height: 1.8; color: #333; background: #f7f9fc; }
+        .header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: #fff; padding: 2rem 1rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+        .nav { background: #fff; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
+        .nav-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .nav a { color: #2c3e50; text-decoration: none; margin: 0 1.2rem; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 500; transition: all 0.3s; }
+        .nav a:hover { color: #3498db; background: #f0f7ff; }
+        .nav a.active { color: #3498db; border-bottom: 2px solid #3498db; }
+        .search-box { max-width: 800px; margin: 2rem auto; text-align: center; padding: 0 1rem; }
+        .search-box input { padding: 1rem 1.5rem; width: 70%; max-width: 600px; border: 1px solid #ddd; border-radius: 4px 0 0 4px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: #3498db; box-shadow: 0 0 0 2px rgba(52,152,219,0.1); }
+        .search-box button { padding: 1rem 2rem; background: #3498db; color: #fff; border: none; border-radius: 0 4px 4px 0; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        .search-box button:hover { background: #2980b9; }
+        .search-result { max-width: 800px; margin: 1rem auto; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: none; }
+        .container { max-width: 1200px; margin: 3rem auto; padding: 0 1rem; }
+        .content-card { background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); margin-bottom: 3rem; }
+        .content-title { color: #2c3e50; font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 3px solid #f0f7ff; padding-bottom: 1rem; }
+        .content-subtitle { color: #3498db; font-size: 1.4rem; margin: 2rem 0 1rem; }
+        .content-img { max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .table-container { overflow-x: auto; margin: 1.5rem 0; }
+        .content-table { width: 100%; border-collapse: collapse; }
+        .content-table th, .content-table td { border: 1px solid #ddd; padding: 1rem; text-align: left; }
+        .content-table th { background: #f7f9fc; color: #2c3e50; font-weight: 600; }
+        .content-table tr:nth-child(even) { background: #f9f9f9; }
+        .tip-box { background: #f0f7ff; padding: 1.2rem; border-left: 4px solid #3498db; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+        .warning-box { background: #fef2f2; padding: 1.2rem; border-left: 4px solid #dc2626; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+        .footer { background: #2c3e50; color: #fff; padding: 3rem 1rem; margin-top: 5rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer-col h3 { font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem; display: inline-block; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: #3498db; }
+        .copyright { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #34495e; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>硬件知识 - 从选购到组装全攻略</h1>
+        <p>CPU、显卡、内存、硬盘等核心部件解析，避坑指南+实战教程，新手也能轻松上手</p>
+    </div>
+
+    <div class="nav">
+        <div class="nav-container">
+            <a href="index.html">首页</a>
+            <a href="hardware.html" class="active">硬件知识</a>
+            <a href="software.html">软件教程</a>
+            <a href="troubleshoot.html">故障排查</a>
+            <a href="tips.html">实用技巧</a>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索硬件知识（如CPU选购、显卡推荐、电脑组装）...">
+        <button onclick="searchSite()">搜索</button>
+        <div class="search-result" id="searchResult"></div>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <h2 class="content-title" id="cpu">CPU选购指南：2025最新款对比+避坑技巧</h2>
+            <img src="https://picsum.photos/id/1/1200/600" alt="CPU图片" class="content-img">
+            <p>CPU（中央处理器）是电脑的"大脑"，决定了电脑的运算速度和多任务处理能力。选择CPU时，需结合预算、使用场景（办公、游戏、设计），重点关注核心数、主频、缓存、功耗等参数。</p>
+
+            <h3 class="content-subtitle">1. CPU核心参数解析</h3>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li><strong>核心数/线程数</strong>：核心数越多，多任务处理能力越强。线程数=核心数×超线程技术（英特尔）/SMT技术（AMD），如6核12线程、8核16线程。
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>办公场景（Word、Excel、浏览网页）：4核8线程足够</li>
+                        <li>游戏场景：6核12线程起步，3A大作推荐8核16线程</li>
+                        <li>设计/渲染场景（PS、PR、3D建模）：8核16线程以上，越多越好</li>
+                    </ul>
+                </li>
+                <li><strong>主频/睿频</strong>：主频是CPU基础运行频率，睿频是满载时的加速频率，单位GHz。主频越高，单核性能越强（影响游戏帧率、日常操作流畅度）。</li>
+                <li><strong>缓存</strong>：分为L1、L2、L3缓存，缓存越大，CPU访问数据速度越快。重点关注L3缓存，如16MB、24MB、36MB。</li>
+                <li><strong>功耗（TDP）</strong>：TDP功耗越低，发热越少，续航越长（笔记本）。桌面端CPU功耗通常为65W、125W，笔记本为15W、45W。</li>
+                <li><strong>接口</strong>：英特尔接口为LGA 1700（12/13/14代）、LGA 1851（15代）；AMD接口为AM4（Ryzen 5000/7000G）、AM5（Ryzen 7000/8000），需与主板接口匹配。</li>
+            </ul>
+
+            <h3 class="content-subtitle">2. 英特尔vsAMD：两大品牌对比</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>品牌</th>
+                        <th>优势</th>
+                        <th>劣势</th>
+                        <th>适合场景</th>
+                        <th>代表系列</th>
+                    </tr>
+                    <tr>
+                        <td>英特尔</td>
+                        <td>单核性能强、稳定性高、兼容性好、游戏优化好</td>
+                        <td>价格偏高、多核性价比低、功耗略高</td>
+                        <td>办公、游戏、专业软件（如Adobe系列）</td>
+                        <td>酷睿i3（入门）、i5（主流）、i7（高端）、i9（旗舰）</td>
+                    </tr>
+                    <tr>
+                        <td>AMD</td>
+                        <td>多核性价比高、核心数多、缓存大、功耗控制好</td>
+                        <td>单核性能略逊、部分游戏优化不足</td>
+                        <td>多任务处理、设计渲染、性价比需求</td>
+                        <td>Ryzen 3（入门）、5（主流）、7（高端）、9（旗舰）</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="content-subtitle">3. 2025不同预算CPU推荐</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>预算</th>
+                        <th>英特尔推荐</th>
+                        <th>AMD推荐</th>
+                        <th>核心/线程</th>
+                        <th>主频/睿频</th>
+                        <th>适合场景</th>
+                    </tr>
+                    <tr>
+                        <td>500-800元</td>
+                        <td>酷睿i3-14100F</td>
+                        <td>Ryzen 5 5500</td>
+                        <td>4核8线程</td>
+                        <td>3.3GHz/4.6GHz</td>
+                        <td>办公、轻度游戏</td>
+                    </tr>
+                    <tr>
+                        <td>800-1500元</td>
+                        <td>酷睿i5-14400F</td>
+                        <td>Ryzen 5 7600X</td>
+                        <td>6核12线程</td>
+                        <td>2.5GHz/4.8GHz</td>
+                        <td>主流游戏、中度设计</td>
+                    </tr>
+                    <tr>
+                        <td>1500-2500元</td>
+                        <td>酷睿i7-14700F</td>
+                        <td>Ryzen 7 7800X3D</td>
+                        <td>8核16线程</td>
+                        <td>2.7GHz/5.4GHz</td>
+                        <td>3A游戏、重度设计</td>
+                    </tr>
+                    <tr>
+                        <td>2500元以上</td>
+                        <td>酷睿i9-14900K</td>
+                        <td>Ryzen 9 7950X</td>
+                        <td>16核32线程</td>
+                        <td>3.0GHz/5.8GHz</td>
+                        <td>专业渲染、多任务极限场景</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <p>💡 选购小贴士：</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>带"F"后缀的CPU无核显，需搭配独立显卡；不带"F"后缀的有核显，可无独显开机。</li>
+                    <li>主板接口需与CPU匹配，如i5-14400F搭配LGA 1700主板，Ryzen 7 7800X3D搭配AM5主板。</li>
+                    <li>游戏玩家优先选择英特尔酷睿i5/i7或AMD Ryzen 5/7，设计渲染优先选择AMD Ryzen 7/9。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="content-title" id="gpu">显卡知识：核显vs独显，2025选购指南</h2>
+            <img src="https://picsum.photos/id/2/1200/600" alt="显卡图片" class="content-img">
+            <p>显卡（GPU）是电脑的"图形处理器"，负责处理图像、视频渲染、游戏画面输出，直接影响游戏帧率和设计软件的运行速度。显卡分为核显（集成在CPU）和独显（独立显卡），需根据使用场景选择。</p>
+
+            <h3 class="content-subtitle">1. 核显vs独显对比</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>类型</th>
+                        <th>特点</th>
+                        <th>优势</th>
+                        <th>劣势</th>
+                        <th>适合场景</th>
+                    </tr>
+                    <tr>
+                        <td>核显</td>
+                        <td>集成在CPU内，无独立显存，共享内存</td>
+                        <td>功耗低、发热少、成本低、无需额外安装</td>
+                        <td>图形性能弱，无法运行大型游戏和设计软件</td>
+                        <td>办公、浏览网页、视频播放、轻度小游戏</td>
+                    </tr>
+                    <tr>
+                        <td>独显</td>
+                        <td>独立硬件，有专属显存（GDDR6/GDDR6X）</td>
+                        <td>图形性能强，支持大型游戏、4K视频渲染、3D建模</td>
+                        <td>功耗高、发热大、成本高、需额外安装</td>
+                        <td>游戏、设计（PS/PR/3DMax）、视频剪辑</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 class="content-subtitle">2. 独显核心参数解析</h3>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li><strong>显存容量</strong>：显存越大，可处理的图像数据越多，支持更高分辨率和纹理质量。
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>轻度游戏/办公：4GB GDDR6</li>
+                        <li>主流游戏（1080P）：6GB-8GB GDDR6</li>
+                        <li>大型游戏（2K/4K）/设计：12GB-16GB GDDR6X</li>
+                    </ul>
+                </li>
+                <li><strong>显存位宽</strong>：决定显存数据传输速度，单位bit，常见128bit、192bit、256bit、384bit。位宽越大，传输速度越快，性能越强。</li>
+                <li><strong>核心频率/显存频率</strong>：核心频率越高，显卡运算速度越快；显存频率越高，数据传输速度越快，单位GHz。</li>
+                <li><strong>CUDA核心/流处理器</strong>：显卡的"核心数量"，数量越多，并行处理能力越强。英特尔用CUDA核心，AMD用流处理器。</li>
+                <li><strong>功耗（TDP）</strong>：功耗越高，发热越大，需搭配更好的散热和电源。桌面端独显功耗通常为100W-350W。</li>
+            </ul>
+
+            <h3 class="content-subtitle">3. 2025独显品牌与型号推荐</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>预算</th>
+                        <th>N卡（英伟达）推荐</th>
+                        <th>A卡（AMD）推荐</th>
+                        <th>显存容量</th>
+                        <th>适合场景</th>
+                    </tr>
+                    <tr>
+                        <td>1000-1500元</td>
+                        <td>RTX 3050</td>
+                        <td>Radeon RX 6600</td>
+                        <td>8GB GDDR6</td>
+                        <td>1080P主流游戏、轻度设计</td>
+                    </tr>
+                    <tr>
+                        <td>1500-2500元</td>
+                        <td>RTX 4060</td>
+                        <td>Radeon RX 6700 XT</td>
+                        <td>8GB-12GB GDDR6</td>
+                        <td>1080P/2K游戏、中度设计</td>
+                    </tr>
+                    <tr>
+                        <td>2500-4000元</td>
+                        <td>RTX 4070</td>
+                        <td>Radeon RX 7800 XT</td>
+                        <td>12GB-16GB GDDR6X</td>
+                        <td>2K/4K游戏、重度设计</td>
+                    </tr>
+                    <tr>
+                        <td>4000元以上</td>
+                        <td>RTX 4080/4090</td>
+                        <td>Radeon RX 7900 XTX</td>
+                        <td>16GB-24GB GDDR6X</td>
+                        <td>4K/8K游戏、专业渲染、AI运算</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <p>⚠️ 注意事项：</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>显卡需与电源匹配，如RTX 4070需650W以上电源，RTX 4090需850W以上电源。</li>
+                    <li>机箱尺寸需容纳显卡，部分高端显卡长度超过30cm，需确认机箱支持。</li>
+                    <li>游戏玩家优先选择N卡（英伟达），优化更好；设计玩家可选择A卡（AMD），性价比更高。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="content-title" id="memory">内存选购指南：容量、频率、品牌怎么选？</h2>
+            <img src="https://picsum.photos/id/3/1200/600" alt="内存图片" class="content-img">
+            <p>内存（RAM）是电脑的"临时仓库"，负责存储正在运行的程序和数据，内存容量和频率直接影响电脑的多任务处理能力和运行速度。选择内存时，需关注容量、频率、时序、品牌等参数，同时注意与主板兼容性。</p>
+
+            <h3 class="content-subtitle">1. 内存核心参数解析</h3>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li><strong>容量</strong>：内存容量越大，可同时运行的程序越多，打开的文件越大。
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem; color: #666;">
+                        <li>办公/轻度上网：8GB（单条8GB）</li>
+                        <li>主流游戏/中度设计：16GB（双条8GB，组成双通道）</li>
+                        <li>大型游戏/重度设计/编程：32GB（双条16GB）</li>
+                        <li>专业渲染/多任务极限场景：64GB以上</li>
+                    </ul>
+                </li>
+                <li><strong>频率</strong>：内存频率越高，数据传输速度越快，单位MHz（如2400MHz、3200MHz、4800MHz）。需与主板支持的频率匹配，否则会自动降频。</li>
+                <li><strong>时序</strong>：内存时序越低，延迟越小，性能越好，通常表示为CL16-18-18-38，CL值越低越好。</li>
+                <li><strong>通道数</strong>：分为单通道、双通道、四通道。双通道（两条相同容量、频率的内存）性能比单通道提升10%-20%，推荐优先选择。</li>
+                <li><strong>类型</strong>：目前主流内存类型为DDR4和DDR5，DDR5频率更高、带宽更大，但价格更贵；DDR4性价比更高，兼容性更好。</li>
+            </ul>
+
+            <h3 class="content-subtitle">2. 2025内存推荐（按场景分类）</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>使用场景</th>
+                        <th>容量</th>
+                        <th>频率</th>
+                        <th>类型</th>
+                        <th>推荐品牌</th>
+                        <th>参考价格</th>
+                    </tr>
+                    <tr>
+                        <td>办公/轻度上网</td>
+                        <td>8GB</td>
+                        <td>DDR4 3200MHz</td>
+                        <td>单条</td>
+                        <td>金士顿、威刚、宇瞻</td>
+                        <td>150-200元</td>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电脑知识大全 - 从入门到精通（2025最新版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", "Heiti SC", sans-serif; line-height: 1.8; color: #333; background: #f7f9fc; }
+        .header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: #fff; padding: 2rem 1rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+        .nav { background: #fff; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
+        .nav-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .nav a { color: #2c3e50; text-decoration: none; margin: 0 1.2rem; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 500; transition: all 0.3s; }
+        .nav a:hover { color: #3498db; background: #f0f7ff; }
+        .nav a.active { color: #3498db; border-bottom: 2px solid #3498db; }
+        .search-box { max-width: 800px; margin: 2rem auto; text-align: center; padding: 0 1rem; }
+        .search-box input { padding: 1rem 1.5rem; width: 70%; max-width: 600px; border: 1px solid #ddd; border-radius: 4px 0 0 4px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: #3498db; box-shadow: 0 0 0 2px rgba(52,152,219,0.1); }
+        .search-box button { padding: 1rem 2rem; background: #3498db; color: #fff; border: none; border-radius: 0 4px 4px 0; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        .search-box button:hover { background: #2980b9; }
+        .search-result { max-width: 800px; margin: 1rem auto; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: none; }
+        .container { max-width: 1200px; margin: 3rem auto; padding: 0 1rem; }
+        .category-section { margin-bottom: 4rem; }
+        .section-title { text-align: center; margin-bottom: 2rem; color: #2c3e50; font-size: 1.8rem; position: relative; }
+        .section-title::after { content: ""; display: block; width: 80px; height: 3px; background: #3498db; margin: 1rem auto; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: #fff; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); overflow: hidden; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-img { height: 180px; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .card:hover .card-img img { transform: scale(1.05); }
+        .card-content { padding: 1.5rem; }
+        .card-title { color: #2c3e50; font-size: 1.3rem; margin-bottom: 0.8rem; }
+        .card-desc { color: #666; line-height: 1.6; margin-bottom: 1rem; }
+        .card-link { display: inline-block; color: #3498db; text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; border: 1px solid #3498db; border-radius: 4px; transition: all 0.3s; }
+        .card-link:hover { background: #3498db; color: #fff; }
+        .hot-tools { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); margin-bottom: 4rem; }
+        .tool-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .tool-item { text-align: center; padding: 1rem; border: 1px solid #f0f0f0; border-radius: 6px; }
+        .tool-icon { font-size: 2rem; color: #3498db; margin-bottom: 0.5rem; }
+        .tool-name { font-weight: 500; color: #2c3e50; margin-bottom: 0.3rem; }
+        .tool-desc { font-size: 0.9rem; color: #666; }
+        .about-section { background: #fff; padding: 3rem 1rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); margin-bottom: 4rem; }
+        .footer { background: #2c3e50; color: #fff; padding: 3rem 1rem; margin-top: 5rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer-col h3 { font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 2px solid #3498db; padding-bottom: 0.5rem; display: inline-block; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: #3498db; }
+        .copyright { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #34495e; }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <h1>电脑知识大全</h1>
+        <p>从新手入门到硬件精通，覆盖100+实用知识点，让你轻松玩转电脑！</p>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="active">首页</a>
+            <a href="hardware.html">硬件知识</a>
+            <a href="software.html">软件教程</a>
+            <a href="troubleshoot.html">故障排查</a>
+            <a href="tips.html">实用技巧</a>
+        </div>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索电脑知识（如CPU选购、蓝屏解决、Excel技巧）...">
+        <button onclick="searchSite()">搜索</button>
+        <div class="search-result" id="searchResult"></div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <!-- 分类导航 -->
+        <div class="category-section">
+            <h2 class="section-title">知识分类</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/id/1/600/400" alt="硬件知识">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">硬件知识</h3>
+                        <p class="card-desc">CPU、显卡、内存、硬盘等核心部件解析，选购避坑指南，硬件组装教程，满足新手到发烧友的需求。</p>
+                        <a href="hardware.html" class="card-link">查看更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/id/2/600/400" alt="软件教程">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">软件教程</h3>
+                        <p class="card-desc">Windows系统优化、Office全套技巧、PS/PR基础操作、编程工具使用，覆盖办公、设计、编程场景。</p>
+                        <a href="software.html" class="card-link">查看更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/id/3/600/400" alt="故障排查">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">故障排查</h3>
+                        <p class="card-desc">蓝屏、死机、网络异常、软件崩溃等常见故障解决方案，无需专业知识，新手也能快速搞定。</p>
+                        <a href="troubleshoot.html" class="card-link">查看更多</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/id/4/600/400" alt="实用技巧">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">实用技巧</h3>
+                        <p class="card-desc">电脑提速、数据备份、快捷键大全、安全防护技巧，提升使用效率，保护电脑和数据安全。</p>
+                        <a href="tips.html" class="card-link">查看更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门文章 -->
+        <div class="category-section">
+            <h2 class="section-title">热门文章</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="hardware.html#cpu" style="color: #2c3e50; text-decoration: none;">2025 CPU选购指南：英特尔14代vsAMD Ryzen 9，怎么选不踩坑？</a></h3>
+                        <p class="card-desc">详细解析核心数、主频、缓存、功耗参数，不同预算（500元-3000元）CPU推荐，办公、游戏、设计场景针对性选择。</p>
+                        <a href="hardware.html#cpu" class="card-link">阅读全文</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="troubleshoot.html#bluescreen" style="color: #2c3e50; text-decoration: none;">电脑蓝屏10大常见代码解析，对应解决方案一文搞定</a></h3>
+                        <p class="card-desc">0x0000007B、0x0000001A、0x00000050等高频蓝屏代码原因分析，分步排查步骤，避免数据丢失。</p>
+                        <a href="troubleshoot.html#bluescreen" class="card-link">阅读全文</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="software.html#excel" style="color: #2c3e50; text-decoration: none;">Excel高级函数大全：VLOOKUP、INDEX+MATCH、数据透视表实战教程</a></h3>
+                        <p class="card-desc">从基础函数到高级组合，解决数据查找、统计、分析需求，附实战案例和步骤截图，新手也能快速上手。</p>
+                        <a href="software.html#excel" class="card-link">阅读全文</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title"><a href="tips.html#speed" style="color: #2c3e50; text-decoration: none;">老旧电脑提速终极方案：软件优化+硬件升级，再战3年不卡顿</a></h3>
+                        <p class="card-desc">无需换电脑，通过系统清理、启动项管理、硬件升级（加内存、换SSD），让老旧电脑性能翻倍。</p>
+                        <a href="tips.html#speed" class="card-link">阅读全文</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门工具推荐 -->
+        <div class="hot-tools">
+            <h2 class="section-title">热门电脑工具</h2>
+            <div class="tool-list">
+                <div class="tool-item">
+                    <div class="tool-icon">📁</div>
+                    <div class="tool-name">7-Zip</div>
+                    <div class="tool-desc">免费无广告压缩软件，支持多种格式</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">🎬</div>
+                    <div class="tool-name">PotPlayer</div>
+                    <div class="tool-desc">轻量级视频播放器，支持所有格式</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">🛡️</div>
+                    <div class="tool-name">Malwarebytes</div>
+                    <div class="tool-desc">强力杀毒软件，清除顽固病毒</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">💻</div>
+                    <div class="tool-name">CCleaner</div>
+                    <div class="tool-desc">系统清理工具，释放空间+提速</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-name">WPS Office</div>
+                    <div class="tool-desc">免费办公软件，兼容Office格式</div>
+                </div>
+                <div class="tool-item">
+                    <div class="tool-icon">🖼️</div>
+                    <div class="tool-name">IrfanView</div>
+                    <div class="tool-desc">图片查看器，支持批量编辑</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关于我们 -->
+        <div class="about-section" id="about">
+            <h2 class="section-title">关于我们</h2>
+            <div class="card-content" style="max-width: 1000px; margin: 0 auto;">
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">网站定位</h3>
+                <p>「电脑知识大全」是一个免费、全面的电脑学习平台，致力于为新手和电脑爱好者提供易懂、实用的硬件科普、软件教程、故障排查和效率技巧。我们拒绝复杂难懂的专业术语，用通俗的语言和清晰的步骤，让每个人都能轻松掌握电脑使用技能，告别技术焦虑。</p>
+                <h3 style="color: #2c3e50; margin: 1.5rem 0 1rem;">作者信息</h3>
+                <p>作者：周家弘（专注电脑知识分享，擅长简化复杂技术，让新手快速入门）</p>
+                <p>反馈邮箱：zjhwyq123456@qq.com（欢迎提出建议、补充知识点或反馈问题，我们会及时回复并优化）</p>
+                <h3 style="color: #2c3e50; margin: 1.5rem 0 1rem;">更新日志</h3>
+                <ul style="margin-left: 1.5rem; color: #666; line-height: 2;">
+                    <li>2025-12-01：网站上线，包含5大板块、100+知识点，支持搜索功能和页面跳转</li>
+                    <li>2025-12-02：新增硬件选购避坑指南、Excel高级函数教程、蓝屏代码解析</li>
+                    <li>2025-12-03：补充热门电脑工具推荐、老旧电脑硬件升级方案</li>
+                    <li>持续更新：每月补充最新电脑技术、软件技巧和故障解决方案，保持内容时效性</li>
+                </ul>
+                <h3 style="color: #2c3e50; margin: 1.5rem 0 1rem;">免责声明</h3>
+                <p>本网站提供的知识仅供学习参考，实际操作时请谨慎备份数据，如有硬件损坏、数据丢失等情况，本网站不承担责任；部分图片来源于网络，如有侵权请联系作者删除（邮箱：zjhwyq123456@qq.com）。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="hardware.html">硬件知识</a></li>
+                    <li><a href="software.html">软件教程</a></li>
+                    <li><a href="troubleshoot.html">故障排查</a></li>
+                    <li><a href="tips.html">实用技巧</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>硬件专题</h3>
+                <ul>
+                    <li><a href="hardware.html#cpu">CPU选购</a></li>
+                    <li><a href="hardware.html#gpu">显卡知识</a></li>
+                    <li><a href="hardware.html#memory">内存选购</a></li>
+                    <li><a href="hardware.html#harddisk">硬盘对比</a></li>
+                    <li><a href="hardware.html#assembly">电脑组装</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>软件专题</h3>
+                <ul>
+                    <li><a href="software.html#windows">Windows优化</a></li>
+                    <li><a href="software.html#excel">Excel技巧</a></li>
+                    <li><a href="software.html#word">Word排版</a></li>
+                    <li><a href="software.html#ps">PS基础</a></li>
+                    <li><a href="software.html#program">编程工具</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>故障与技巧</h3>
+                <ul>
+                    <li><a href="troubleshoot.html#bluescreen">蓝屏解决</a></li>
+                    <li><a href="troubleshoot.html#network">网络异常</a></li>
+                    <li><a href="tips.html#speed">电脑提速</a></li>
+                    <li><a href="tips.html#backup">数据备份</a></li>
+                    <li><a href="tips.html#shortcut">快捷键大全</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 电脑知识大全 - 周家弘 版权所有 | 反馈邮箱：zjhwyq123456@qq.com</p>
+        </div>
+    </div>
+
+    <!-- 搜索功能JavaScript -->
+    <script>
+        const searchData = [
+            // 硬件知识
+            { keyword: "CPU", title: "2025 CPU选购指南：英特尔14代vsAMD Ryzen 9", url: "hardware.html#cpu", desc: "核心数、主频、缓存参数解析，不同预算CPU推荐" },
+            { keyword: "显卡", title: "显卡知识：核显vs独显，显存容量怎么选？", url: "hardware.html#gpu", desc: "游戏、设计场景显卡推荐，N卡vsA卡对比" },
+            { keyword: "内存", title: "内存选购指南：容量、频率、双通道怎么选？", url: "hardware.html#memory", desc: "办公、游戏、设计内存容量推荐，品牌选择" },
+            { keyword: "硬盘", title: "硬盘对比：机械硬盘vs固态硬盘，怎么选？", url: "hardware.html#harddisk", desc: "容量、速度、寿命对比，系统盘、数据盘选择" },
+            { keyword: "电脑组装", title: "电脑组装教程：新手也能轻松搞定", url: "hardware.html#assembly", desc: "配件安装步骤、接线方法、BIOS设置" },
+            // 软件教程
+            { keyword: "Windows", title: "Windows 10/11 系统优化全步骤", url: "software.html#windows", desc: "开机自启、后台服务、视觉效果优化" },
+            { keyword: "Excel", title: "Excel高级函数大全：VLOOKUP、INDEX+MATCH", url: "software.html#excel", desc: "数据查找、统计、分析实战教程" },
+            { keyword: "Word", title: "Word快速排版技巧：样式、模板、目录", url: "software.html#word", desc: "论文、报告排版规范，批量修改格式" },
+            { keyword: "PS", title: "Photoshop基础技巧：抠图、调色、修图", url: "software.html#ps", desc: "快速抠图、图片调色、去除水印" },
+            { keyword: "编程工具", title: "编程工具推荐：VS Code、PyCharm使用技巧", url: "software.html#program", desc: "插件安装、快捷键、调试方法" },
+            // 故障排查
+            { keyword: "蓝屏", title: "电脑蓝屏10大常见代码解析", url: "troubleshoot.html#bluescreen", desc: "蓝屏原因分析，分步排查解决方案" },
+            { keyword: "网络异常", title: "网络异常故障排查：无法连接、速度慢", url: "troubleshoot.html#network", desc: "路由器设置、DNS修改、网络重置" },
+            { keyword: "软件崩溃", title: "软件崩溃故障：打开崩溃、运行中崩溃", url: "troubleshoot.html#crash", desc: "兼容性设置、驱动更新、软件重装" },
+            { keyword: "死机", title: "电脑死机原因及解决方法", url: "troubleshoot.html#freeze", desc: "散热不良、硬件冲突、系统问题排查" },
+            // 实用技巧
+            { keyword: "提速", title: "老旧电脑提速终极方案", url: "tips.html#speed", desc: "软件优化+硬件升级，性能翻倍" },
+            { keyword: "数据备份", title: "电脑数据备份教程：本地+云端", url: "tips.html#backup", desc: "Windows备份、百度网盘、阿里云盘使用" },
+            { keyword: "快捷键", title: "Windows常用快捷键大全", url: "tips.html#shortcut", desc: "办公、游戏、系统操作快捷键" },
+            { keyword: "安全防护", title: "电脑安全防护技巧：病毒、钓鱼网站", url: "tips.html#security", desc: "杀毒软件、防火墙、密码安全设置" }
+        ];
+
+        function searchSite() {
+            const input = document.getElementById("searchInput").value.trim().toLowerCase();
+            const resultBox = document.getElementById("searchResult");
+            resultBox.innerHTML = "";
+            resultBox.style.display = "block";
+
+            if (!input) {
+                resultBox.innerHTML = "<p>请输入搜索关键词（如CPU、蓝屏、Excel）</p>";
+                return;
+            }
+
+            const matches = searchData.filter(item => 
+                item.keyword.toLowerCase().includes(input) || 
+                item.title.toLowerCase().includes(input) || 
+                item.desc.toLowerCase().includes(input)
+            );
+
+            if (matches.length === 0) {
+                resultBox.innerHTML = "<p>未找到相关内容，请更换关键词尝试（如CPU选购、蓝屏解决、Excel技巧）</p>";
+            } else {
+                let html = `<p>找到 ${matches.length} 条相关结果：</p><ul style="list-style:none;margin:1rem 0;">`;
+                matches.forEach(item => {
+                    html += `<li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f0f0f0;">
+                        <a href="${item.url}" style="color:#3498db; text-decoration:none; font-weight:500; font-size:1.1rem;">${item.title}</a>
+                        <p style="color:#666; margin-top:0.5rem;">${item.desc}</p>
+                    </li>`;
+                });
+                html += "</ul>";
+                resultBox.innerHTML = html;
+            }
+        }
+
+        // 回车触发搜索
+        document.getElementById("searchInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") searchSite();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故障排查 - 电脑知识大全（2025最新版）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", "Heiti SC", sans-serif; line-height: 1.8; color: #333; background: #f7f9fc; }
+        .header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: #fff; padding: 2rem 1rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .header p { font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+        .nav { background: #fff; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 999; }
+        .nav-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .nav a { color: #2c3e50; text-decoration: none; margin: 0 1.2rem; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 500; transition: all 0.3s; }
+        .nav a:hover { color: #3498db; background: #f0f7ff; }
+        .nav a.active { color: #3498db; border-bottom: 2px solid #3498db; }
+        .search-box { max-width: 800px; margin: 2rem auto; text-align: center; padding: 0 1rem; }
+        .search-box input { padding: 1rem 1.5rem; width: 70%; max-width: 600px; border: 1px solid #ddd; border-radius: 4px 0 0 4px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: #3498db; box-shadow: 0 0 0 2px rgba(52,152,219,0.1); }
+        .search-box button { padding: 1rem 2rem; background: #3498db; color: #fff; border: none; border-radius: 0 4px 4px 0; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+        .search-box button:hover { background: #2980b9; }
+        .search-result { max-width: 800px; margin: 1rem auto; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: none; }
+        .container { max-width: 1200px; margin: 3rem auto; padding: 0 1rem; }
+        .content-card { background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); margin-bottom: 3rem; }
+        .content-title { color: #2c3e50; font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 3px solid #f0f7ff; padding-bottom: 1rem; }
+        .content-subtitle { color: #3498db; font-size: 1.4rem; margin: 2rem 0 1rem; }
+        .content-img { max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .step-list { margin-left: 2rem; line-height: 2; }
+        .step-list li { margin-bottom: 1rem; position: relative; padding-left: 1rem; }
+        .step-list li::before { content: "→"; color: #3498db; font-weight: bold; position: absolute; left: -1rem; }
+        .table-container { overflow-x: auto; margin: 1.5rem 0; }
+        .content-table { width: 100%; border-collapse: collapse; }
+        .content-table th, .content-table td { border: 1px solid #ddd; padding: 1rem; text-align:1rem; text-align: left; }
+        .content-table th { background: #f7f9fc; color: #2c3e50; font-weight: 600; }
+        .content-table tr:nth-child(even) { background: #f9f9f9; }
+        .tip-box { background: #f0f7ff; padding: 1.2rem; border-left: 4px solid #3498db; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+        .warning-box { background: #fef2f2; padding: 1.2rem; border-left: 4px solid #dc2626; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>故障排查 - 电脑问题快速解决</h1>
+        <p>蓝屏、死机、网络异常、软件崩溃等常见故障，无需专业知识，新手也能搞定</p>
+    </div>
+
+    <div class="nav">
+        <div class="nav-container">
+            <a href="index.html">首页</a>
+            <a href="hardware.html">硬件知识</a>
+            <a href="software.html">软件教程</a>
+            <a href="troubleshoot.html" class="active">故障排查</a>
+            <a href="tips.html">实用技巧</a>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索故障问题（如蓝屏、死机、网络异常、软件崩溃）...">
+        <button onclick="searchSite()">搜索</button>
+        <div class="search-result" id="searchResult"></div>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <h2 class="content-title" id="bluescreen">电脑蓝屏（BSOD）10大常见代码解析+解决方案</h2>
+            <img src="https://picsum.photos/id/8/1200/600" alt="电脑蓝屏故障" class="content-img">
+            <p>蓝屏（Blue Screen of Death）是Windows系统严重故障的表现，屏幕会显示蓝色背景和错误代码。以下是2025年最常见的10个蓝屏代码，对应原因和分步解决方案，覆盖90%的蓝屏场景。</p>
+
+            <div class="warning-box">
+                <p>⚠️ 紧急处理：</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>蓝屏后不要强制关机，等待系统自动重启（通常1-3分钟），避免数据丢失；</li>
+                    <li>重启后立即备份重要数据（如文档、图片），防止再次蓝屏导致数据损坏；</li>
+                    <li>若反复蓝屏无法进入系统，可通过「安全模式」排查（开机按F8/F12，选择安全模式）。</li>
+                </ul>
+            </div>
+
+            <h3 class="content-subtitle">1. 常见蓝屏代码及解决方案</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <tr>
+                        <th>蓝屏代码</th>
+                        <th>核心原因</th>
+                        <th>解决方案</th>
+                    </tr>
+                    <tr>
+                        <td>0x0000007B</td>
+                        <td>硬盘驱动故障、BIOS设置错误、硬盘坏道</td>
+                        <td>1. 进入BIOS，将SATA模式改为AHCI/IDE（尝试切换）；2. 检查硬盘连接线是否松动；3. 用DiskGenius检测硬盘坏道；4. 重装硬盘驱动（安全模式下）</td>
+                    </tr>
+                    <tr>
+                        <td>0x0000001A</td>
+                        <td>内存故障、虚拟内存设置错误、系统文件损坏</td>
+                        <td>1. 运行内存诊断（Win+R输入mdsched.exe）；2. 增加虚拟内存（此电脑→属性→高级→性能→设置→高级→虚拟内存）；3. 修复系统文件（管理员命令行输入sfc /scannow）</td>
+                    </tr>
+                    <tr>
+                        <td>0x00000050</td>
+                        <td>内存损坏、驱动不兼容、病毒感染</td>
+                        <td>1. 拔插内存（断电后），擦拭金手指；2. 卸载最近安装的驱动（如显卡驱动）；3. 用Malwarebytes扫描病毒；4. 更换内存测试</td>
+                    </tr>
+                    <tr>
+                        <td>0x000000D1</td>
+                        <td>驱动程序冲突、驱动损坏、超频过度</td>
+                        <td>1. 卸载最近安装的驱动（尤其是显卡、声卡驱动）；2. 禁用超频（BIOS中恢复默认设置）；3. 用Driver Booster更新驱动；4. 检查硬件温度（避免过热）</td>
+                    </tr>
+                    <tr>
+                        <td>0x0000003B</td>
+                        <td>系统文件损坏、显卡驱动故障、软件冲突</td>
+                        <td>1. 修复系统文件（sfc /scannow）；2. 重装显卡驱动（官网下载最新版）；3. 卸载最近安装的软件（如游戏、设计软件）；4. 运行DISM命令修复系统（DISM /Online /Cleanup-Image /RestoreHealth）</td>
+                    </tr>
+                    <tr>
+                        <td>0x000000C2</td>
+                        <td>内存泄漏、软件bug、硬件冲突</td>
+                        <td>1. 关闭后台占用内存的软件；2. 卸载有bug的软件（查看最近安装的软件）；3. 检查硬件冲突（设备管理器→查看→显示隐藏设备，
